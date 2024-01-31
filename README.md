@@ -102,8 +102,8 @@ pm2 start index.js --name wabot-bot
 👤 **Guiherme Augusto**
 
 * Github: [@guilhermossauro](https://github.com/Guilhermossauro/)
-* LinkedIn: [@guilhermeA]([https://linkedin.com/in/kaualandi](https://www.linkedin.com/in/guilherme-augusto-ferreira-66807320b/))
-* Instagram: [@kguidino11](https://www.instagram.com/guidino11/)
+* LinkedIn: [@guilhermeA](https://www.linkedin.com/in/guilherme-augusto-ferreira-66807320b/)
+* Instagram: [@guidino11](https://www.instagram.com/guidino11/)
 
 
 ## 🥰 Mostre seu apoio
