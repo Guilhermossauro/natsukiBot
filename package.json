@@ -1,0 +1,43 @@
+{
+  "name": "lil-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "server": "json-server ./server/db.json --port 3200",
+    "server:w": "json-server --watch ./server/db.json --port 3200",
+    "game": "json-server  ./game/game.json --port 3000",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@open-wa/wa-automate": "^4.66.3",
+    "@open-wa/wa-decrypt": "^4.4.0",
+    "@sasmeee/igdl": "^1.0.0",
+    "axios": "^0.27.2",
+    "body-parser": "^1.20.2",
+    "chrome": "^0.1.0",
+    "chromium": "^3.0.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.2",
+    "ffmpeg": "^0.0.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "google-tts-api": "^2.0.2",
+    "image-downloader": "^4.3.0",
+    "json-server": "^0.17.4",
+    "nodemon": "^2.0.16",
+    "openai": "^3.2.1",
+    "pkg": "^5.8.0",
+    "pm2": "^5.3.0",
+    "request-promise": "^4.2.6",
+    "selenium": "^2.20.0",
+    "selenium-webdriver": "^4.8.0",
+    "sharp": "^0.31.3",
+    "tiktok-tts": "^1.1.14",
+    "youtube-mp3-downloader": "^0.7.10",
+    "youtube-search": "^1.1.6",
+    "ytdl-core": "^4.11.5"
+  }
+}
