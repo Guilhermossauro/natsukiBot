@@ -12,7 +12,7 @@
 
 ## Instalando bot
 ```bash
-git clone https://github.com/kaualandi/bot-whatsapp.git
+git clone https://github.com/kaualandi/bot-whatsapp.git](https://github.com/Guilhermossauro/natsukiBot)
 ```
 ```bash
 cd bot-whatsapp
@@ -25,13 +25,21 @@ npm install
 Você precisará de um arquivo `.env` parecido com esse:
 ```env
 USING=PRODUCTION ENVIRONMENT VARIABLES
-MAINTENANCE_MODE=false
+MAINTENANCE_MODE=true
 BASEURL_BOTINFORS=http://localhost:3200
+BASE_URL_game= http://localhost:3000
+OPENAI_API_KEY= suachavedaOPENAI
+BASEURL_RECEIVER= http://localhost:3001
 
+
+yt_dlPath=C:\Users\bin\youtube-dl
+YT_KEY=SUA_CHAVE_DA_API_DO_YOUTUBE
+TIKTOK_KEY= sua_sessionid_do_tiktok
+
+
+ffmpegPath=Caminho\do\ffmpeg\namaquina
 TOKEN_CONSULTAS=
 BASE_URL_CONSULTAS=
-
-ffmpegPath=/usr/bin/ffmpeg
 ```
 Basta agora preencher os dados:
 - **USING:** é figurativo, apenas se mostrará qual variável está sendo usada, no caso de ter duas.
@@ -91,16 +99,12 @@ pm2 start index.js --name wabot-bot
 ```
 ## Autor
 
-👤 **Kauã Landi**
+👤 **Guiherme Augusto**
 
-* Website: https://kaualf.netlify.app
-* Github: [@kaualandi](https://github.com/kaualandi)
-* LinkedIn: [@kaualandi](https://linkedin.com/in/kaualandi)
-* Instagram: [@kaua.landi](https://www.instagram.com/kaua.landi/)
+* Github: [@guilhermossauro](https://github.com/Guilhermossauro/)
+* LinkedIn: [@guilhermeA]([https://linkedin.com/in/kaualandi](https://www.linkedin.com/in/guilherme-augusto-ferreira-66807320b/))
+* Instagram: [@kguidino11](https://www.instagram.com/guidino11/)
 
-## 🤝 Contribuição
-
-Contribuições, problemas e solicitações de recursos são bem-vindos! <br/> Sinta-se à vontade para verificar a [página de problemas](https://github.com/kaualandi/wabot-atendimento/issues). Você também pode dar uma olhada na [página de contribuição](https://github.com/kaualandi/wabot-atendimento/pulls).
 
 ## 🥰 Mostre seu apoio
 
