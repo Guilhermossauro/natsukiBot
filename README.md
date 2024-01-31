@@ -12,7 +12,7 @@
 
 ## Instalando bot
 ```bash
-git clone https://github.com/kaualandi/bot-whatsapp.git](https://github.com/Guilhermossauro/natsukiBot)
+git clone https://github.com/Guilhermossauro/natsukiBot
 ```
 ```bash
 cd bot-whatsapp
