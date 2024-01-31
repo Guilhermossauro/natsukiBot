@@ -8,7 +8,7 @@
 
 </p>
 
-> Olá, esse bot de whatsapp foi criado com foco em atendimento ao cliente.
+> Olá, esse bot de whatsapp foi criado com foco em entreterimento geral
 
 ## Instalando bot
 ```bash
