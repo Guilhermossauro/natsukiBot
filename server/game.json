@@ -1,0 +1,157 @@
+{
+    "cards": [
+        {
+        "id": "Elven o Assassino",
+        "ataque": 2,
+        "defesa": 2,
+        "habilidade_especial": "não possui"
+        },
+        {
+        "id": "Giant Scorpion",
+        "ataque": 3,
+        "defesa": 7,
+        "habilidade_especial": "veneno"
+        },
+        {
+        "id": "Goblin Fireballer",
+        "ataque": 4,
+        "defesa": 3,
+        "habilidade_especial": "ataque em área"
+        },
+        {
+        "id": "Night Ghoul",
+        "ataque": 10,
+        "defesa": 18,
+        "habilidade_especial": "Ataque surpresa"
+        },
+        {
+        "id": "Vampire Bat",
+        "ataque": 1,
+        "defesa": 5,
+        "habilidade_especial": "roubo de vida"
+        },
+        {
+        "id": "Venari Scout",
+        "ataque": 5,
+        "defesa": 5,
+        "habilidade_especial": "ataque surpresa"
+        },
+        {
+        "id": "Elemental de Fogo",
+        "ataque": 4,
+        "defesa": 2,
+        "habilidade_especial": "Dano adicional em área"
+        },
+        {
+        "id": "Animated Corpse",
+        "ataque": 10,
+        "defesa": 8,
+        "habilidade_especial": "Cura em batalha"
+        },
+        {
+        "id": "Dragão de Gelo",
+        "ataque": 9,
+        "defesa": 9,
+        "habilidade_especial": "Congelar inimigos"
+        },
+        {
+        "id": "Ant Miners",
+        "ataque": 8,
+        "defesa": 8,
+        "habilidade_especial": "não possui"
+        },
+        {
+        "id": "Harvester",
+        "ataque": 7,
+        "defesa": 7,
+        "habilidade_especial": "Roubo de vida"
+        },
+        {
+        "id": "Highland Archer",
+        "ataque": 6,
+        "defesa": 6,
+        "habilidade_especial": "Ataque à distância"
+        },
+        {
+        "id": "Kulu Swimhunter",
+        "ataque": 5,
+        "defesa": 5,
+        "habilidade_especial": "atordoa oponentes aquaticos"
+        },
+        {
+        "id": "Armorsmith",
+        "ataque": 4,
+        "defesa": 4,
+        "habilidade_especial": "Cura em campo"
+        },  
+      {
+        "id": "Fire Elemental",
+        "ataque": 5,
+        "defesa": 3,
+        "habilidade_especial": "Immune to fire-based attack"
+        },
+        {  
+        "id": "Chaos Knight",
+        "ataque": 8,
+        "defesa": 12,
+        "habilidade_especial": "2 ataques por turno"
+        },
+        {  
+        "id": "Delwyn Dragonscale",
+        "ataque": 8,
+        "defesa": 7,
+        "habilidade_especial": "Gains +1 ataque for each point of health it has lost"
+        },
+        {  
+        "id": "Lightning Mage",
+        "ataque": 3,
+        "defesa": 3,
+        "habilidade_especial": "Deals 3 points of lightning damage to a random enemy at the end of each turn"
+        },
+        {  
+        "id": "Demented Shark",
+        "ataque": 5,
+        "defesa": 3,
+        "habilidade_especial": "Aumenta a defesa em 2 quando ataca"
+        },
+        {  
+       "id": "Dragon Whelp",
+       "ataque": 7,
+       "defesa": 4,
+       "habilidade_especial": "Ataca duas vezes em uma rodada"
+        },
+        {  
+       "id": "Gelatinous Cube",
+       "ataque": 0,
+       "defesa": 9,
+       "habilidade_especial": "Ataque furtivo "
+        },  
+      {  
+        "id": "Silvershield Knight",
+        "ataque": 4,
+        "defesa": 5,
+        "habilidade_especial": "Cura aliados adjacentes em 1 ponto de vida"
+        }
+      ],
+
+      "moedas": [ {
+        "id": "LILcoin",
+        "valor_venda": 0.17,
+        "valor_compra":0.25
+      },
+      {
+        "id": "Deck",
+        "valor_venda": 0.17,
+        "valor_compra":0.25
+      }
+      ],
+
+    
+      "table":[
+        
+      ],
+      "floresta":[
+
+      ]
+    }
+

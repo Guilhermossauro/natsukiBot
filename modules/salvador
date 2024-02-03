@@ -1,0 +1,240 @@
+const {sortearCartas, calcularPontos, changeturn, get_game, addCardToPlayer, setcard, end_game, setpoints } = require("../fetch");
+const deck_message=`Movimentos do blackjack
+══════════════════
+Este é um jogo padrão de black jack aonde:
+Cartas de 2 a 9: os valores correspondem às cartas;
+Cartas 10, valete, dama e rei: todas as cartas valem 10;
+Às: ela pode valer 1 ou 11, dependendo da sua mão.
+
+
+Para pedir uma carta envie
+!bj bid
+
+Para segurar a sua carta envie
+!bj hold
+
+Caso queira desistir do jogo
+!blackjack encerrar
+`
+
+exports.bj = async function bj(client, message) {
+const { id, from, body, sender, caption, chat, isGroupMsg } = message;
+const commands = caption || body || "";
+let { pushname, verifiedName } = sender;
+pushname = pushname || verifiedName;
+const args = commands.split(" ");
+const helpMode = args[1];
+let battle= await get_game();
+let groupInBattle= battle.find(table => table.id === chat.id)
+let players;
+let isPlayer = false;
+let player1;
+let player2;
+if (groupInBattle){
+players = [groupInBattle.jogador1,groupInBattle.jogador2]
+player1 = groupInBattle.jogador1
+player2 = groupInBattle.jogador2
+isPlayer= players.includes(sender.id);}
+let help = "";
+if (!isGroupMsg) return client.reply(from, "Este comando só pode ser usado em grupos.", id);
+    if (!groupInBattle)return client.reply(from, "Não há uma batalha em andamento neste grupo. Use o comando !game batalhar para começar uma nova batalha.", id);
+        if (sender.id !== groupInBattle.playerRound ) return  client.reply(from,`Apenas o jogador atual pode fazer um movimento`,id)
+let card;
+let pontos;
+    let deck = []
+    let apresent = ``
+    let retornoa = ``
+    let player_points;
+    let vez;
+
+let jogador1= []
+
+
+
+switch (helpMode) { 
+
+case 'bid':
+
+        let sorteadas= await sortearCartas()
+        let sorteadasedited= {card:sorteadas.card}
+        deck.push(sorteadasedited)
+        if (sender.id === player1) {
+            player1_data= groupInBattle.jogadores
+            console.log(player1_data)
+            jogador1 = {
+                jogador: 'jogador1',
+                deck: {},
+                pontos: 0
+                };
+            if (player1_data=== undefined || player1_data=== "" || player1_data=== null ||player1_data === []   ) {
+                vez = await verificado(sender.id,chat.id)
+                pontos = await calcularPontos(sorteadas);
+                console.log(pontos)
+                jogador1 = {
+                    jogador: 'jogador1',
+                    deck: {},
+                    pontos: 0
+                    };  
+                jogador1.deck= []
+                jogador1.deck.push(deck)
+                jogador1.pontos = pontos
+                await setcard(chat.id,jogador1)      
+                help=  `Suas cartas são:  ${sorteadas} Pontuação: ${pontos}
+Alterei o turno para @${vez}`   
+                await client.sendTextWithMentions(from, help);     
+                await changeturn(chat.id,vez)     
+                return
+            }
+                console.log("!por algum caralho de motivo ele veio para ELSE")
+                player1_data= groupInBattle.jogadores[0].player
+                jogador1 = {
+                    jogador: 'jogador1',
+                    deck: {},
+                    pontos: 0
+                    };
+                    console.log(groupInBattle.jogadores[0].player.deck)
+                player1_cartas= groupInBattle.jogadores[0].player.deck.map(carta => carta.card);
+                console.log(player1_cartas)
+                player1_pontos= groupInBattle.jogadores[0].player.pontos
+                for (const carta of player1_cartas) {
+                    const edited = {card: carta}
+                    apresent +=`"${carta}" `
+                    deck.push(edited)
+                await setcard(chat.id,jogador1)    
+            }
+            pontos = await calcularPontos(sorteadas,player1_pontos);
+            if (pontos > 21){  
+                client.reply(from,"Você perdeu !")
+                await client.sendTextWithMentions (from,`Sua pontuação foi ${pontos} \n Jogador @${groupInBattle.jogador2} venceu ! Partida encerrada`)
+                await end_game(chat.id)
+                return
+            } 
+            jogador1.deck= []
+                jogador1.deck.push(deck)
+                jogador1.pontos = pontos
+                await setcard(chat.id,jogador1)  
+                help=  `Suas cartas são:  ${retornoa} Pontuação: ${pontos}
+Alterei o turno para @${vez}`      
+
+        await client.sendTextWithMentions(from, help); 
+        return  
+    }  
+    // AGORA SERA O JOGADOR 2 CASO VERDADEIRO
+
+    if (sender.id=== player2){
+        try {
+       const player2_data= groupInBattle.jogadores[1]
+        } catch (err){
+            vez = await verificado(sender.id,chat.id)
+            jogador2 = {
+                jogador: 'jogador2',
+                deck: {},
+                pontos: 0
+                };
+  
+            pontos = await calcularPontos(sorteadas);  
+            jogador2.deck= []
+            jogador2.deck.push(deck)
+            jogador2.pontos = pontos
+            await setcard(chat.id,jogador2)      
+            help=  `Suas cartas são:  ${sorteadas} Pontuação: ${pontos}
+Alterei o turno para @${vez}`   
+            await client.sendTextWithMentions(from, help);     
+            await changeturn(chat.id,vez)     
+            return      
+        }
+        jogador2 = {
+            jogador: 'jogador2',
+            deck: {},
+            pontos: 0
+            };
+            player2_data= groupInBattle.jogadores[1].player
+            jogador2 = {
+                jogador: 'jogador2',
+                deck: {},
+                pontos: 0
+                };
+            player2_cartas= groupInBattle.jogadores[1].player.deck.map(carta => carta.card);
+            console.log(player2_cartas)
+            player2_pontos= groupInBattle.jogadores[1].player.pontos
+            for (const carta of player2_cartas) {
+                const edited = {card: carta}
+                apresent +=`"${carta}" `
+                deck.push(edited)
+            }
+            await setcard(chat.id,jogador2)    
+        
+        pontos = await calcularPontos(sorteadas,player2_pontos);
+        if (pontos > 21){  
+            client.reply(from,"Você perdeu !")
+            await client.sendTextWithMentions (from,`Sua pontuação foi ${calculado} \n Jogador @${groupInBattle.jogador1} venceu ! Partida encerrada`)
+            await end_game(chat.id)
+            return
+        } 
+        jogador2.deck= []
+            jogador2.deck.push(deck)
+            jogador2.pontos = pontos
+            await setcard(chat.id,jogador2)  
+            help=  `Suas cartas são:  ${retornoa} Pontuação: ${calculado}
+Alterei o turno para @${vez}`      
+
+    await client.sendTextWithMentions(from, help); 
+    return  
+    }
+
+brake
+
+    case 'hold':
+            if (sender.id === player1){
+                vez = player2
+                player1_data= groupInBattle.jogadores.jogador1.deck
+                player1_handed= player1_data.map(carta => carta.card);
+                player_points= groupInBattle.player1_points
+                for (const carta of player1_handed) {
+                    const edited = {card: carta}
+                    apresent +=`"${carta}" `
+                    deck.push(edited)
+                }
+                pontos = player1
+                }
+                if (sender.id === player2){
+                    vez = player1
+                    player2_data= groupInBattle.player2_hand
+                    player2_handed= player2_data.map(carta => carta.card);
+                    player_points= groupInBattle.player2_points
+                    player2_handed= player2_data.map(carta => carta.card);
+                for (const carta of player2_handed) {
+                    const edited = {card: carta}
+                    apresent +=`"${carta}" `
+                    deck.push(edited)
+
+                }
+                pontos = player2
+                }
+            changeturn(chat.id,vez)
+            help = `Suas cartas são:  ${apresent} \nPontuação: ${player_points}\n Alterei o turno para @${vez} `
+            break
+                            
+        default:
+            help = `${deck_message}` 
+            break;  
+
+
+}
+await client.sendTextWithMentions(from, help);
+}
+
+async function verificado(jogador,chat){
+    battle= await get_game();
+    groupInBattle= battle.find(table => table.id === chat)
+    player1 = groupInBattle.jogador1
+    player2 = groupInBattle.jogador2
+    
+    if (jogador === player1){
+    vez = player2
+    }
+    if (jogador === player2){
+        vez = player1
+    }
+    return vez
+    }

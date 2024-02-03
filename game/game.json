@@ -1,0 +1,274 @@
+{
+  "cards": [
+    {
+      "id": "Elven o Assassino",
+      "atk": 2,
+      "life": 4,
+      "Def": 2,
+      "CA": 6,
+      "habilidade_especial": "não possui"
+    },
+    {
+      "id": "Giant Scorpion",
+      "atk": 3,
+      "life": 8,
+      "CA": 14,
+      "Def": 7,
+      "habilidade_especial": "veneno"
+    },
+    {
+      "id": "Goblin Fireballer",
+      "atk": 4,
+      "life": 4,
+      "Def": 3,
+      "CA": 6,
+      "habilidade_especial": "atk em área"
+    },
+    {
+      "id": "Night Ghoul",
+      "atk": 10,
+      "life": 4,
+      "Def": 18,
+      "CA": 12,
+      "habilidade_especial": "atk surpresa"
+    },
+    {
+      "id": "Vampire Bat",
+      "atk": 1,
+      "life": 4,
+      "Def": 5,
+      "CA": 4,
+      "habilidade_especial": "roubo de life"
+    },
+    {
+      "id": "Venari Scout",
+      "atk": 5,
+      "life": 4,
+      "Def": 5,
+      "CA": 4,
+      "habilidade_especial": "atk surpresa"
+    },
+    {
+      "id": "Elemental de Fogo",
+      "atk": 4,
+      "life": 4,
+      "Def": 2,
+      "CA": 14,
+      "habilidade_especial": "Dano adicional em área"
+    },
+    {
+      "id": "Animated Corpse",
+      "atk": 10,
+      "life": 4,
+      "Def": 8,
+      "CA": 4,
+      "habilidade_especial": "Cura em batalha"
+    },
+    {
+      "id": "Dragão de Gelo",
+      "atk": 9,
+      "life": 4,
+      "Def": 9,
+      "CA": 14,
+      "habilidade_especial": "Congelar inimigos"
+    },
+    {
+      "id": "Ant Miners",
+      "atk": 8,
+      "life": 4,
+      "Def": 8,
+      "CA": 4,
+      "habilidade_especial": "não possui"
+    },
+    {
+      "id": "Harvester",
+      "atk": 7,
+      "life": 4,
+      "Def": 7,
+      "CA": 4,
+      "habilidade_especial": "Roubo de life"
+    },
+    {
+      "id": "Highland Archer",
+      "atk": 6,
+      "life": 4,
+      "Def": 6,
+      "CA": 4,
+      "habilidade_especial": "atk à distância"
+    },
+    {
+      "id": "Kulu Swimhunter",
+      "atk": 5,
+      "life": 4,
+      "Def": 5,
+      "CA": 4,
+      "habilidade_especial": "atordoa oponentes aquaticos"
+    },
+    {
+      "id": "Armorsmith",
+      "atk": 4,
+      "Def": 4,
+      "life": 4,
+      "CA": 4,
+      "habilidade_especial": "Cura em campo"
+    },
+    {
+      "id": "Fire Elemental",
+      "atk": 5,
+      "life": 13,
+      "Def": 3,
+      "CA": 14,
+      "habilidade_especial": "Immune to fire-based attack"
+    },
+    {
+      "id": "Chaos Knight",
+      "atk": 8,
+      "life": 20,
+      "Def": 12,
+      "CA": 16,
+      "habilidade_especial": "2 atks por turno"
+    },
+    {
+      "id": "Delwyn Dragonscale",
+      "atk": 8,
+      "life": 15,
+      "Def": 7,
+      "CA": 13,
+      "habilidade_especial": "Gains +1 atk for each point of health it has lost"
+    },
+    {
+      "id": "Lightning Mage",
+      "atk": 3,
+      "life": 4,
+      "Def": 3,
+      "CA": 4,
+      "habilidade_especial": "Deals 3 points of lightning damage to a random enemy at the end of each turn"
+    },
+    {
+      "id": "Demented Shark",
+      "atk": 5,
+      "life": 12,
+      "Def": 3,
+      "CA": 4,
+      "habilidade_especial": "Aumenta a Def em 2 quando ataca"
+    },
+    {
+      "id": "Dragon Whelp",
+      "atk": 7,
+      "life": 30,
+      "Def": 4,
+      "CA": 18,
+      "habilidade_especial": "Ataca duas vezes em uma rodada"
+    },
+    {
+      "id": "Gelatinous Cube",
+      "atk": 1,
+      "life": 2,
+      "Def": 9,
+      "CA": 4,
+      "habilidade_especial": "atk furtivo "
+    },
+    {
+      "id": "Silvershield Knight",
+      "atk": 4,
+      "life": 10,
+      "Def": 5,
+      "CA": 4,
+      "habilidade_especial": "Cura aliados adjacentes em 1 ponto de life"
+    }
+  ],
+  "moedas": [
+    {
+      "id": "LILcoin",
+      "valor_venda": 0.17,
+      "valor_compra": 0.25
+    },
+    {
+      "id": "Deck",
+      "valor_venda": 0.17,
+      "valor_compra": 0.25
+    }
+  ],
+  "tables": [
+    {
+      "id": "5527988999019-1603079614@g.us",
+      "tablefrom": "5527988999019-1603079614@g.us",
+      "jogador1": "5527988999019@c.us",
+      "jogador2": "553182264128@c.us",
+      "playerRound": "5527988999019@c.us",
+      "grupoOnGame": true,
+      "player1_hand": [],
+      "player1_points": [],
+      "player2_hand": [],
+      "player2_points": [],
+      "turns": 1,
+      "jogadores": [
+        {
+          "jogador1": "5527988999019@c.us",
+          "deck": [
+            {
+              "jogador1": "5527988999019@c.us",
+              "deck": [
+                "2"
+              ],
+              "pontos": 2
+            }
+          ],
+          "pontos": 0
+        },
+        {
+          "jogador2": "553182264128@c.us",
+          "deck": [],
+          "pontos": 0
+        }
+      ]
+    },
+    {
+      "id": "120363024984862586@g.us",
+      "tablefrom": "120363024984862586@g.us",
+      "jogador1": "5527988999019@c.us",
+      "jogador2": "5527988999019@c.us",
+      "playerRound": "5527988999019@c.us",
+      "grupoOnGame": true,
+      "player1_hand": [],
+      "player1_points": [],
+      "player2_hand": [],
+      "player2_points": [],
+      "turns": 1
+    }
+  ],
+  "floresta": [],
+  "tier": [
+    {
+      "games": [
+        {
+          "id": "Jogo Da Velha",
+          "rank": [
+            {
+              "player": "5527988999019@c.us",
+              "points": 7
+            }
+          ]
+        },
+        {
+          "id": "Blackjack",
+          "rank": [
+            {
+              "player": "5527988999019@c.us",
+              "points": 3
+            }
+          ]
+        },
+        {
+          "id": "Slotmachine",
+          "rank": [
+            {
+              "player": "5527988999019@c.us",
+              "points": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

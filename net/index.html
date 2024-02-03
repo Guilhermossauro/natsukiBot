@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização de Logs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #29adad; /* Verde Claro para o fundo */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #373b3f; /* Cinza para o cabeçalho */
+            padding: 15px;
+        }
+
+        button {
+            padding: 15px 50px;
+            font-size: 16px;
+            background-color: #ffc107; /* Amarelo para o botão */
+            color: white;
+            border: 2px solid #ffcd38;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s, border 0.3s, transform 0.1s;
+            margin: 20px auto; /* Alinha ao meio */
+        }
+
+        button:hover {
+            background-color: #ffcd38;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            background-color: #e0a800;
+            transform: scale(0.95);
+        }
+
+        #logsContainer {
+            white-space: pre-wrap;
+            text-align: left;
+            display: none;
+            padding: 20px;
+            flex: 1; /* Ocupa todo o espaço disponível */
+        }
+
+        footer {
+            background-color: #6f42c1; /* Roxo Escuro para o rodapé */
+            padding: 1px;
+            color: white;
+            margin-top: auto; /* Mantém o rodapé no final da página */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Visualização de Logs</h1>
+    </header>
+
+    <button onclick="mostrarLogs()">Logs</button>
+
+    <pre id="logsContainer"></pre>
+
+    <footer>
+        <p>@hunterstech</p>
+    </footer>
+
+    <script>
+        function mostrarLogs() {
+            fetch('log_output.txt')
+                .then(response => response.text())
+                .then(logs => {
+                    const logsContainer = document.getElementById('logsContainer');
+                    logsContainer.textContent = logs;
+                    logsContainer.style.display = 'block';
+                })
+                .catch(error => console.error('Erro ao carregar logs:', error));
+        }
+
+        function atualizarLogsAutomaticamente() {
+            setInterval(() => {
+                mostrarLogs();
+            }, 5000); // Atualiza a cada 5 segundos (5000 milissegundos)
+        }
+
+        atualizarLogsAutomaticamente();
+    </script>
+</body>
+</html>
