@@ -1,4 +1,4 @@
-const {sortearCartas, calcularPontos, changeturn, get_game, setcard, end_game, setpoints, adicionarCarta } = require("../fetch");
+const {sortearCartas, calcularPontos, changeturn, get_game, end_game, adicionarCarta } = require("../fetch");
 const deck_message=`Movimentos do blackjack
 ══════════════════
 Este é um jogo padrão de black jack aonde:
@@ -31,13 +31,16 @@ let players;
 let deck= []
 let isPlayer = false;
 let jogador1;
+let player1;
+let jogadorNaMesa;
+let player2;
 let vez;
-let resultador
 let pontos;
 if (groupInBattle){
 players = [groupInBattle.jogador1,groupInBattle.jogador2]
 player1 = groupInBattle.jogador1
 player2 = groupInBattle.jogador2
+console.log(`player1 = ${player1} e agora player 2 ${player2}`)
 let player1_cartas;
 isPlayer= players.includes(sender.id);}
 let help = "";
@@ -52,55 +55,73 @@ switch (helpMode) {
     case 'bid':
         let sorteadas = await sortearCartas();
         pontos = await calcularPontos(sorteadas);
-    
         let sorteadasEdited = { card: sorteadas };
-        let novoEdited = { card: sorteadas, ponto: pontos };
-    
-        deck.push(sorteadasEdited);
-        console.log(`isso e novo edited${novoEdited.card}`);
-    
-        let jogadorData = groupInBattle.jogadores?.[0];
-        console.log(`isso e jogadordata ${JSON.stringify(jogadorData)}`);
-    
-        vez = await verificado(sender.id, chat.id);
-    
-        if (!jogadorData?.deck || jogadorData.deck.length === 0) {
-            console.log(`entrou nesse if aqui que estou editando antes`)
-            jogadorData.deck.push(sorteadas);
-            console.log(`isto sera outro teste saber sobre o jogador data ${JSON.stringify(jogadorData)}`)
-            
-    
-            const resultador = await adicionarCarta(jogador1, remendo, jogadorData);
-            console.log(`Resultador = ${resultador}`);
-    
-            let help = `Suas cartas são:  ${sorteadas} Pontuação: ${pontos}\nAlterei o turno para @${vez}`;
-            await client.sendTextWithMentions(from, help);
-            return;
-        } else {
+        let resultador
+  let mao = []
+  let npontos
 
-            console.log("Por algum motivo ele veio para ELSE (provavelmente nao vai vir se o jogador nao tiver nenhuma carta)");
-            let ajustador = jogadorData.deck;
-            resultador= adicionarCarta(jogador1, remendo, sorteadas,pontos);
-            console.log(`isto estara vindo antes do !ajustador ${ajustador}`)
-            console.log(`eu nao faco o que vai vir em resultador entao vou ver aqui nesse log ${ajustador}`)
-    
+
+        deck.push(sorteadasEdited);
+const jogadores = groupInBattle.jogadores
+   jogadorNaMesa = await jogadores.find(j => j.jogador1 === sender.id || j.jogador2 === sender.id);
+        let jogadorData = jogadorNaMesa
+        let ajustador = jogadorData.deck;
+        vez = await verificado(sender.id, chat.id);
+
+
+
+
+        if (jogadorData.pontos != 0){
+            ajustador.forEach(card => {
+                mao.push(card);      
+              });
+              mao.push(sorteadas)
+            maoedited= mao.slice(1)
+            npontos = await calcularPontos(maoedited)
+              if(npontos >= 21){
+            let  help = `Suas cartas foram:  ${maoedited} \nPontuação: ${npontos}\nVoce perdeu @${sender.id}`;
+            let end = `Parabéns @${vez} voce ganhou`;
+              await client.sendTextWithMentions(from, help);
+              await client.sendTextWithMentions(from, end);
+              await end_game(chat.id)
+            return
+              }
+       let  help = `Suas cartas são:  ${maoedited} \nPontuação: ${npontos}\nAlterei o turno para @${vez}`;
+              await client.sendTextWithMentions(from, help);
+              changeturn(chat.id,vez)
+              resultador = await adicionarCarta(sender.id, remendo, sorteadas,npontos);
+              return
+        }
+
+        resultador = await adicionarCarta(sender.id, remendo, sorteadas,pontos);
+       let helper = `Suas cartas são:  ${sorteadas} \nPontuação: ${pontos}\nAlterei o turno para @${vez}`;
+        await client.sendTextWithMentions(from, helper);
+        changeturn(chat.id,vez)
             if (!ajustador) {
                 jogadorData.deck = deck[0];
                 resultador = await adicionarCarta(jogador1, remendo, sorteadas,pontos);
+                if (sorteadas== 'B'){
+                    sorteadas= 10
+                }
                 console.log(`Resultador = ${resultador}`);
                 
-    
-                let help = `Suas cartas são:  ${sorteadas} Pontuação: ${pontos}\nAlterei o turno para @${vez} !a`;
+                let help = `Suas cartas são:  ${sorteadas}\n Pontuação: ${pontos}\nAlterei o turno para @${vez} `;
                 await client.sendTextWithMentions(from, help);
+                changeturn(chat.id,vez)
                 console.log("Deu certo a parte 1, faltam 3");
-            } else {
-                console.log("Deu certo a parte 1, faltam 3 parte 2 depois do else");
             }
-        }
         break;
 
     case 'hold':
-           
+        vez = await verificado(sender.id, chat.id);
+        changeturn(chat.id,vez)
+        let help = `\n Pulando a vez \nAlterei o turno para @${vez} `;   
+        await client.sendTextWithMentions(from, help); 
+        break
+
+        default:
+            help =`${deck_message}`
+            break;
 }
 await client.sendTextWithMentions(from, help);
 }
