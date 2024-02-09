@@ -95,7 +95,7 @@ Escaneie o QR Code como se estivesse conectando ao whatsapp web e mande um `!men
 
 Se quiser usar o pm2, execute:
 ```bash
-pm2 start index.js --name wabot-bot
+pm2 start app.js --name wabot-bot
 ```
 ## Autor
 
