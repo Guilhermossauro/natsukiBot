@@ -886,9 +886,13 @@ exports.setjogodavelha = async function setjogodavelha(grupo,player1){
         return await axios.patch(`${BASE_URL_game}/tables/${grupo}`, {             
             playerRound: player1,
             turns: 1,
-            jogadores:[{jogador1:player1,
-            deck: [0],
+            jogadores:[{id:player1,
+            player:'jogador1',
+            jogador1:player1,
+            deck: ['0'],
             pontos: 0},{
+            id:player2,
+            player:'jogador2',
             jogador2:player2,
             deck: [0],
             pontos: 0
@@ -1043,7 +1047,7 @@ exports.calcularDano = function calcularDano(atacante, alvo) {
     
 }
 exports.checkVipExpired = async function checkVipExpired(id) {
-        const res = await axios.get(`http://localhost:3200/vip/${id}`);
+        const res = await axios.get(`${BASEURL_BOTINFORS}/vip/${id}`);
         const data = res.data;
         console.log(data)
       
@@ -1189,10 +1193,6 @@ exports.sortearCartas = async function sortearCartas() {
 exports.setBj = async function setBj(grupo,player1){
     return await axios.patch(`${BASE_URL_game}/tables/${grupo}`, {             
         playerRound: player1,
-        player1_hand:[],
-        player1_points:[],
-        player2_hand:[],
-        player2_points:[],
         turns: 1,
     
         }).then((res) => {
@@ -1771,7 +1771,6 @@ exports.adicionarCarta =  async function adicionarCarta(jogador, grupo, carta,po
       }
       
       const jogadores = mesa.jogadores
-      console.log(`isto e jogadores ${jogadores[0]}`)
       // Verifica se o jogador está na mesa
       const jogadorNaMesa = await jogadores.find(j => j.jogador1 === jogador || j.jogador2 === jogador);
       if (!jogadorNaMesa) throw new Error('Jogador não encontrado na mesa');
@@ -1780,25 +1779,33 @@ exports.adicionarCarta =  async function adicionarCarta(jogador, grupo, carta,po
       const nomeDoJogador = await jogadorNaMesa.jogador1 === jogador ? 'jogador2' : 'jogador1';
       let logador = 0
       if (nomeDoJogador== "jogador1"){
-        logador= 0
-      } else if (nomeDoJogador== "jogador2") {
         logador= 1
+      } else if (nomeDoJogador== "jogador2") {
+        logador= 0
       }
       const jogadorF= jogadores[logador]
-      console.log(`isso é jogador nomedojogador ${nomeDoJogador}`)
       // Adiciona a carta ao deck do jogador
       let decker=jogadorF.deck
       let jogadorponto= jogadorF.pontos
+      if (jogadorponto== null || jogadorponto== undefined ){
+        jogadorponto= 0 
+      }
     let resultante = decker.push(carta);
-    let pontuacao = jogadorponto.push(ponto)
+    let pontuacao =  ponto
+    jogadorF.pontos = pontuacao
+let info
+     info= mesa
+        fetcher(url,info)
 
       
-      // Atualiza a mesa no servidor
-      await fetch(url, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(mesa)
-      });
+        async function fetcher(url, data) {
+            await fetch(url, {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            });
+          }
+
       
       // Retorna o novo deck do jogador
       return jogadorNaMesa.deck;
