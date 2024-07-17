@@ -37,8 +37,6 @@ BASEURL_RECEIVER= http://localhost:3001
 yt_dlPath=C:\Users\bin\youtube-dl
 YT_KEY=SUA_CHAVE_DA_API_DO_YOUTUBE
 TIKTOK_KEY= sua_sessionid_do_tiktok
-- Exercícios de fixação de conceitos.
-- Projetos práticos desenvolvidos em sala de aula.
 
 ffmpegPath=Caminho\do\ffmpeg\namaquina
 TOKEN_CONSULTAS=
